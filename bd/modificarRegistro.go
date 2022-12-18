@@ -45,17 +45,14 @@ func ModificarRegistro(u models.Usuario, ID string) (bool, error) {
 		registro["sitioweb"] = u.SitioWeb
 	}
 
-	updateString := bson.M{
+	updtString := bson.M{
 		"$set": registro,
 	}
 
 	objID, _ := primitive.ObjectIDFromHex(ID)
-
-	// Crear un filtro gt, lt , eq, ge, le
 	filtro := bson.M{"_id": bson.M{"$eq": objID}}
 
-	_, err := col.UpdateOne(ctx, filtro, updateString)
-
+	_, err := col.UpdateOne(ctx, filtro, updtString)
 	if err != nil {
 		return false, err
 	}
