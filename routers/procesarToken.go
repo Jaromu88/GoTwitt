@@ -32,10 +32,10 @@ func ProcesarToken(tk string) (*models.Claim, bool, string, error) {
 	})
 
 	if err == nil {
-		_, encontrado, _ := bd.CheckUsuarioYaExiste(claims.Email)
+		_, encontrado, ID := bd.CheckUsuarioYaExiste(claims.Email)
 		if encontrado {
 			Email = claims.Email
-			IDUsuario = claims.ID.Hex()
+			IDUsuario = ID
 		}
 		return claims, encontrado, IDUsuario, nil
 	}
