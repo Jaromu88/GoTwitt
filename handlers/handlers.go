@@ -34,11 +34,22 @@ func Manejadores() {
 	router.HandleFunc("/subirAvatar", middlew.CheckBD(middlew.ValidarJWT(routers.SubirAvatar))).Methods("POST")
 	//Endpoint de obtenerAvatar
 	router.HandleFunc("/obtenerAvatar", middlew.CheckBD(routers.ObtenerAvatar)).Methods("GET")
-
 	//Endpoint de subirBanner
 	router.HandleFunc("/subirBanner", middlew.CheckBD(middlew.ValidarJWT(routers.SubirBanner))).Methods("POST")
 	//Endpoint de obtenerBanner
 	router.HandleFunc("/obtenerBanner", middlew.CheckBD(routers.ObtenerBanner)).Methods("GET")
+
+	//Endpoint de altaRelacion
+	router.HandleFunc("/altaRelacion", middlew.CheckBD(middlew.ValidarJWT(routers.AltaRelacion))).Methods("POST")
+	//Endpoint de bajaRelacion
+	router.HandleFunc("/bajaRelacion", middlew.CheckBD(middlew.ValidarJWT(routers.BajaRelacion))).Methods("DELETE")
+	//Endpoint de bajaRelacion
+	router.HandleFunc("/consultaRelacion", middlew.CheckBD(middlew.ValidarJWT(routers.ConsultaRelacion))).Methods("GET")
+
+	//Endpoint de listaUsuarios
+	router.HandleFunc("/listaUsuarios", middlew.CheckBD(middlew.ValidarJWT(routers.ListaUsuarios))).Methods("GET")
+	//Endpoint de leoTweetsSeguidores
+	router.HandleFunc("/leoTweetsSeguidores", middlew.CheckBD(middlew.ValidarJWT(routers.LeoTweetsSeguidores))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
