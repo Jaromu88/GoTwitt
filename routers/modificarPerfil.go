@@ -20,7 +20,7 @@ func ModificarPerfil(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var status bool
-	status, err = bd.ModificarRegistro(t, IDUsuario)
+	status, err = bd.ModificarRegistroBD(t, IDUsuario)
 
 	if err != nil {
 		http.Error(w, "Ocurrió un error al intentar modificar el registro"+err.Error(), 400)

@@ -11,8 +11,8 @@ import (
 	"github.com/rs/cors"
 )
 
-/*Manejadores establece las rutas y el puerto de escucha */
-func Manejadores() {
+/*Handlers establece las rutas y el puerto de escucha */
+func Handlers() {
 	router := mux.NewRouter()
 
 	//Endpoint de registro
@@ -20,36 +20,36 @@ func Manejadores() {
 	//Endpoint de login
 	router.HandleFunc("/login", middlew.CheckBD(routers.Login)).Methods("POST")
 	//Endpoint de verperfil
-	router.HandleFunc("/verperfil", middlew.CheckBD(middlew.ValidarJWT(routers.VerPerfil))).Methods("GET")
+	router.HandleFunc("/verperfil", middlew.CheckBD(middlew.ValidateJWT(routers.VerPerfil))).Methods("GET")
 	//Endpoint de modificarPerfil
-	router.HandleFunc("/modificarPerfil", middlew.CheckBD(middlew.ValidarJWT(routers.ModificarPerfil))).Methods("PUT")
+	router.HandleFunc("/modificarPerfil", middlew.CheckBD(middlew.ValidateJWT(routers.ModificarPerfil))).Methods("PUT")
 	//Endpoint de tweet
-	router.HandleFunc("/tweet", middlew.CheckBD(middlew.ValidarJWT(routers.GraboTweet))).Methods("POST")
+	router.HandleFunc("/tweet", middlew.CheckBD(middlew.ValidateJWT(routers.GuardarTweet))).Methods("POST")
 	//Endpoint de leoTweets
-	router.HandleFunc("/leoTweets", middlew.CheckBD(middlew.ValidarJWT(routers.LeoTweets))).Methods("GET")
+	router.HandleFunc("/leoTweets", middlew.CheckBD(middlew.ValidateJWT(routers.LeerTweets))).Methods("GET")
 	//Endpoint de eliminarTweet
-	router.HandleFunc("/eliminarTweet", middlew.CheckBD(middlew.ValidarJWT(routers.EliminarTweet))).Methods("DELETE")
+	router.HandleFunc("/eliminarTweet", middlew.CheckBD(middlew.ValidateJWT(routers.EliminarTweet))).Methods("DELETE")
 
 	//Endpoint de subirAvatar
-	router.HandleFunc("/subirAvatar", middlew.CheckBD(middlew.ValidarJWT(routers.SubirAvatar))).Methods("POST")
+	router.HandleFunc("/subirAvatar", middlew.CheckBD(middlew.ValidateJWT(routers.SubirAvatar))).Methods("POST")
 	//Endpoint de obtenerAvatar
 	router.HandleFunc("/obtenerAvatar", middlew.CheckBD(routers.ObtenerAvatar)).Methods("GET")
 	//Endpoint de subirBanner
-	router.HandleFunc("/subirBanner", middlew.CheckBD(middlew.ValidarJWT(routers.SubirBanner))).Methods("POST")
+	router.HandleFunc("/subirBanner", middlew.CheckBD(middlew.ValidateJWT(routers.SubirBanner))).Methods("POST")
 	//Endpoint de obtenerBanner
 	router.HandleFunc("/obtenerBanner", middlew.CheckBD(routers.ObtenerBanner)).Methods("GET")
 
 	//Endpoint de altaRelacion
-	router.HandleFunc("/altaRelacion", middlew.CheckBD(middlew.ValidarJWT(routers.AltaRelacion))).Methods("POST")
+	router.HandleFunc("/altaRelacion", middlew.CheckBD(middlew.ValidateJWT(routers.AltaRelacion))).Methods("POST")
 	//Endpoint de bajaRelacion
-	router.HandleFunc("/bajaRelacion", middlew.CheckBD(middlew.ValidarJWT(routers.BajaRelacion))).Methods("DELETE")
+	router.HandleFunc("/bajaRelacion", middlew.CheckBD(middlew.ValidateJWT(routers.BajaRelacion))).Methods("DELETE")
 	//Endpoint de bajaRelacion
-	router.HandleFunc("/consultaRelacion", middlew.CheckBD(middlew.ValidarJWT(routers.ConsultaRelacion))).Methods("GET")
+	router.HandleFunc("/consultaRelacion", middlew.CheckBD(middlew.ValidateJWT(routers.ConsultaRelacion))).Methods("GET")
 
 	//Endpoint de listaUsuarios
-	router.HandleFunc("/listaUsuarios", middlew.CheckBD(middlew.ValidarJWT(routers.ListaUsuarios))).Methods("GET")
+	router.HandleFunc("/listaUsuarios", middlew.CheckBD(middlew.ValidateJWT(routers.ListaUsuarios))).Methods("GET")
 	//Endpoint de leoTweetsSeguidores
-	router.HandleFunc("/leoTweetsSeguidores", middlew.CheckBD(middlew.ValidarJWT(routers.LeoTweetsSeguidores))).Methods("GET")
+	router.HandleFunc("/leoTweetsSeguidores", middlew.CheckBD(middlew.ValidateJWT(routers.LeerTweetsSeguidores))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {

@@ -12,5 +12,5 @@ func main() {
 		log.Fatal("Error al conectar con la BD")
 		return
 	}
-	handlers.Manejadores()
+	handlers.Handlers()
 }

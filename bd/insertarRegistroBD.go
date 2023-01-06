@@ -8,8 +8,8 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-/*InsertoRegistro es la función final que registrará al usuario en la BD */
-func InsertoRegistro(u models.Usuario) (string, bool, error) {
+/*InsertoRegistroBD es la función final que registrará al usuario en la BD */
+func InsertoRegistroBD(u models.Usuario) (string, bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 
 	defer cancel()

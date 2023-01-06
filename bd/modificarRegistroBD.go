@@ -9,8 +9,8 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-/*ModificarRegistro me va a permitir modificar el perfil de usuario */
-func ModificarRegistro(u models.Usuario, ID string) (bool, error) {
+/*ModificarRegistroBD me va a permitir modificar el perfil de usuario */
+func ModificarRegistroBD(u models.Usuario, ID string) (bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 

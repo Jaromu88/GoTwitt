@@ -8,8 +8,8 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-/*CheckUsuarioYaExiste recibe un email y me indica si el usuario ya existe en la BD*/
-func CheckUsuarioYaExiste(email string) (models.Usuario, bool, string) {
+/*CheckUserExist recibe un email y me indica si el usuario ya existe en la BD*/
+func CheckUserExist(email string) (models.Usuario, bool, string) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 
 	defer cancel()

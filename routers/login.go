@@ -28,7 +28,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//Compruebo si el usuario existe en la base de datos
-	documento, existe := bd.IntentoLogin(t.Email, t.Password)
+	documento, existe := bd.IntentoLoginBD(t.Email, t.Password)
 
 	if !existe {
 		http.Error(w, "Usuario y/o contraseña incorrectas", 400)
@@ -36,7 +36,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//Si existe genero el token
-	jwtKey, err := jwt.GenerarToken(documento)
+	jwtKey, err := jwt.GenerateToken(documento)
 
 	if err != nil {
 		http.Error(w, "Ocurrió un error al generar el token"+err.Error(), 400)

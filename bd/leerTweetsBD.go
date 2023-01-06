@@ -10,8 +10,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-/*LeoTweets me permite leer los tweets de un perfil */
-func LeoTweets(ID string, pagina int64) ([]*models.DevuelvoTweets, bool) {
+/*LeerTweetsBD me permite leer los tweets de un perfil */
+func LeerTweetsBD(ID string, pagina int64) ([]*models.DevuelvoTweets, bool) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 

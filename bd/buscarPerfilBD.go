@@ -10,8 +10,8 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-/*BuscarPerfil me devuelve un perfil de usuario*/
-func BuscarPerfil(ID string) (models.Usuario, error) {
+/*BuscarPerfilBD me devuelve un perfil de usuario*/
+func BuscarPerfilBD(ID string) (models.Usuario, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 

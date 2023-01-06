@@ -15,8 +15,8 @@ var Email string
 /*IDUsuario id devuelto del modelo, usado en todos mis endpoints */
 var IDUsuario string
 
-/*ProcesarToken procesa el token para extraer sus valores */
-func ProcesarToken(tk string) (*models.Claim, bool, string, error) {
+/*ProcessToken procesa el token para extraer sus valores */
+func ProcessToken(tk string) (*models.Claim, bool, string, error) {
 	miClave := []byte("EstaEsMiClave")
 	claims := &models.Claim{}
 
@@ -32,7 +32,7 @@ func ProcesarToken(tk string) (*models.Claim, bool, string, error) {
 	})
 
 	if err == nil {
-		_, encontrado, ID := bd.CheckUsuarioYaExiste(claims.Email)
+		_, encontrado, ID := bd.CheckUserExist(claims.Email)
 		if encontrado {
 			Email = claims.Email
 			IDUsuario = ID

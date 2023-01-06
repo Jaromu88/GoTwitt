@@ -8,8 +8,8 @@ import (
 	"github.com/Jaromu88/GoTwitt/bd"
 )
 
-/*LeoTweets Leo los tweets */
-func LeoTweets(w http.ResponseWriter, r *http.Request) {
+/*LeerTweetsBD Leo los tweets */
+func LeerTweets(w http.ResponseWriter, r *http.Request) {
 	ID := r.URL.Query().Get("id")
 
 	if len(ID) < 1 {
@@ -30,7 +30,7 @@ func LeoTweets(w http.ResponseWriter, r *http.Request) {
 	}
 
 	pag := int64(pagina)
-	respuesta, correcto := bd.LeoTweets(ID, pag)
+	respuesta, correcto := bd.LeerTweetsBD(ID, pag)
 
 	if !correcto {
 		http.Error(w, "Error al leer los tweets", http.StatusBadRequest)

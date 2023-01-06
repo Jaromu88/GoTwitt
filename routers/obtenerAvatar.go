@@ -17,7 +17,7 @@ func ObtenerAvatar(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	perfil, err := bd.BuscarPerfil(ID)
+	perfil, err := bd.BuscarPerfilBD(ID)
 	if err != nil {
 		http.Error(w, "Usuario no encontrado", http.StatusBadRequest)
 		return

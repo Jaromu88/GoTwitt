@@ -9,19 +9,19 @@ import (
 	"github.com/Jaromu88/GoTwitt/models"
 )
 
-/*GraboTweet permite grabar el tweet en la BD */
-func GraboTweet(w http.ResponseWriter, r *http.Request) {
+/*GuardarTweet permite grabar el tweet en la BD */
+func GuardarTweet(w http.ResponseWriter, r *http.Request) {
 	var mensaje models.Tweet
 
 	err := json.NewDecoder(r.Body).Decode(&mensaje)
 
-	registro := models.GraboTweet{
+	registro := models.GuardarTweet{
 		UserID:  IDUsuario,
 		Mensaje: mensaje.Mensaje,
 		Fecha:   time.Now(),
 	}
 
-	_, status, err := bd.InsertarTweet(registro)
+	_, status, err := bd.InsertarTweetBD(registro)
 
 	if err != nil {
 		http.Error(w, "Ocurrió un error al intentar insertar el tweet "+err.Error(), 400)

@@ -33,7 +33,7 @@ func SubirBanner(w http.ResponseWriter, r *http.Request) {
 	var status bool
 
 	usuario.Banner = IDUsuario + "." + extension
-	status, err = bd.ModificarRegistro(usuario, IDUsuario)
+	status, err = bd.ModificarRegistroBD(usuario, IDUsuario)
 	if err != nil || !status {
 		http.Error(w, "Error al grabar el banner en la BD ! "+err.Error(), http.StatusBadRequest)
 		return

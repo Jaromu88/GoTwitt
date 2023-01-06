@@ -7,8 +7,8 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 )
 
-/*GenerarToken me va a generar el token con jwt */
-func GenerarToken(t models.Usuario) (string, error) {
+/*GenerateToken me va a generar el token con jwt */
+func GenerateToken(t models.Usuario) (string, error) {
 	miClave := []byte("EstaEsMiClave")
 
 	payload := jwt.MapClaims{

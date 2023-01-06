@@ -8,12 +8,12 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-/*MongoCN guarda la función ConectarBD */
-var MongoCN = ConectarBD()
+/*MongoCN guarda la función ConnectDB */
+var MongoCN = ConnectDB()
 var clientOptions = options.Client().ApplyURI("mongodb+srv://root:root@gotwitt.u2s5oq1.mongodb.net/test?retryWrites=true&w=majority") //?retryWrites=true&w=majority
 
-/*ConectarBD es la funcion que me permite conectar con la BD */
-func ConectarBD() *mongo.Client {
+/*ConnectDB es la funcion que me permite conectar con la BD */
+func ConnectDB() *mongo.Client {
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
 		log.Fatal(err.Error())
